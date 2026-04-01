@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Football Analyst</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body class="bg-dark text-white">
+    <div id="app" class="container">
+        <header class="d-flex justify-content-between p-3">
+            <h2 id="title">Veto Vision AI</h2>
+            <select id="langSwitch" class="form-select w-25">
+                <option value="ar">العربية</option>
+                <option value="en">English</option>
+                <option value="fr">Français</option>
+            </select>
+        </header>
+
+        <div id="matchContainer" class="mt-4">
+            </div>
+
+        <div id="vipNotice" class="card bg-gold p-3 mt-4 text-center d-none">
+            <p id="vipText">اشترك الآن لفتح تحليلات VIP دقيقة!</p>
+            <button onclick="checkout()" class="btn btn-primary">تفعيل VIP (5$)</button>
+        </div>
+    </div>
+
+    <script>
+        const i18n = {
+            ar: { title: "فيتو فيجن AI", vip: "تفعيل VIP" },
+            en: { title: "Veto Vision AI", vip: "Activate VIP" },
+            fr: { title: "Veto Vision IA", vip: "Activer VIP" }
+        };
+        // منطق تبديل اللغة وجلب البيانات
+    </script>
+</body>
+</html>
