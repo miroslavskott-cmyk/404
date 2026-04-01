@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #0f172a; color: #f8fafc; margin: 0; padding: 15px; }
+        .header { text-align: center; padding: 20px 0; border-bottom: 1px solid #1e293b; }
+        .match-card { background: #1e293b; border-radius: 12px; padding: 15px; margin-top: 15px; border: 1px solid #334155; position: relative; }
+        .vip-badge { position: absolute; top: 10px; right: 10px; background: #eab308; color: #000; padding: 2px 8px; border-radius: 4px; font-size: 10px; font-weight: bold; }
+        .teams { display: flex; justify-content: space-between; align-items: center; font-size: 1.1em; font-weight: 600; }
+        .prediction-box { background: #0f172a; border-radius: 8px; padding: 10px; margin-top: 10px; border-left: 4px solid #3b82f6; }
+        .prob-bar { height: 10px; background: #334155; border-radius: 5px; margin: 10px 0; overflow: hidden; display: flex; }
+        .win { background: #22c55e; height: 100%; } .draw { background: #94a3b8; height: 100%; } .loss { background: #ef4444; height: 100%; }
+        .confidence { font-size: 0.8em; color: #94a3b8; text-align: right; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h2 id="app-title">AI Match Analyst</h2>
+        <p id="sub-title">Daily Intelligent Insights</p>
+    </div>
+
+    <div id="match-container">
+        </div>
+
+    <script>
+        let tg = window.Telegram.WebApp;
+        tg.expand();
+        
+        // بيانات تجريبية (سيتم جلبها لاحقاً من الـ API الخاص بك)
+        const matches = [
+            { home: "Real Madrid", away: "Man City", win: 45, draw: 25, loss: 30, rec: "Home Win / BTTS", conf: 88 },
+            { home: "Arsenal", away: "Liverpool", win: 35, draw: 30, loss: 35, rec: "Over 2.5 Goals", conf: 72 }
+        ];
+
+        const container = document.getElementById('match-container');
+        matches.forEach(m => {
+            container.innerHTML += `
+                <div class="match-card">
+                    <span class="vip-badge">VIP AI</span>
+                    <div class="teams">
+                        <span>${m.home}</span> <span>VS</span> <span>${m.away}</span>
+                    </div>
+                    <div class="prob-bar">
+                        <div class="win" style="width: ${m.win}%"></div>
+                        <div class="draw" style="width: ${m.draw}%"></div>
+                        <div class="loss" style="width: ${m.loss}%"></div>
+                    </div>
+                    <div class="prediction-box">
+                        <strong>💡 Prediction:</strong> ${m.rec}
+                    </div>
+                    <div class="confidence">AI Confidence: ${m.conf}%</div>
+                </div>
+            `;
+        });
+    </script>
+</body>
+</html>
